@@ -19,7 +19,7 @@ import { DB_NAME, DB_PASS, DB_PORT, DB_USERNAME, POSTGRES_HOST } from './utils/c
       entities: [User],
       synchronize: true,
       autoLoadEntities: true
-    }),],
+    })],
   controllers: [AppController],
   providers: [AppService]
 })

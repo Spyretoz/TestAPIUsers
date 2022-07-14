@@ -1,6 +1,6 @@
 import { Controller, Post, Body, UseGuards, Get, Req } from '@nestjs/common';
 import { UserService } from './users.service';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 
@@ -16,14 +16,19 @@ export class UsersController {
 
   // login as existing user
   @Post('login')
-  login(@Body() LoginDto: LoginDto) {
+  login(@Body() LoginDto: LoginDto): Promise<string> {
     return this.userService.login(LoginDto);
   }
 
   // show user data
-  @UseGuards(AuthGuard)
+  //@UseGuards(AuthGuard)
   @Get('me')
   show(@Req() req: any) {
     return this.userService.getUser(req.user);
+  }
+
+  @Get('test')
+  findAll() {
+    return this.userService.findAll();
   }
 }

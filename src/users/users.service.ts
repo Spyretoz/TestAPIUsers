@@ -62,4 +62,8 @@ export class UserService {
   async getUser(data: any) {
     return data;
   }
+
+  findAll() {
+    return 'haha';
+  }
 }
